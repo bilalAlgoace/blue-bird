@@ -30,7 +30,7 @@ export default async function Home() {
     <div className="w-full max-w-xl mx-auto">
       <AuthButtonServer />
       <TweetInput user={session.user} />
-      <Tweets tweets={tweets} />
+      <Tweets tweets={tweets} currentUserId={session.user.id} />
     </div>
   );
 }
