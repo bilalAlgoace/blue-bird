@@ -15,7 +15,7 @@ export default async function LoginPage() {
   }
 
   return (
-    <div>
+    <div className="h-full w-full">
       <Login />
     </div>
   )
