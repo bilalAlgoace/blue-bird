@@ -12,7 +12,7 @@ const AuthButton = ({ session } : { session: Session | null }) => {
     await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `http://${location.origin}/api/auth/callback`,
+        redirectTo: `${location.origin}/api/auth/callback`,
       },
     });
   };
