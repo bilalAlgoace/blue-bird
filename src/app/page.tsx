@@ -5,6 +5,7 @@ import AuthButtonServer from "@/components/Auth/AuthButtonServer";
 import TweetInput from "@/components/Tweets/TweetInput";
 import Tweets from "@/components/Tweets/Tweets";
 
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const supabase = await createServerComponentClient<Database>({ cookies });
@@ -15,7 +16,7 @@ export default async function Home() {
     redirect("/login");
   }
 
-  const { data } = await supabase.from("tweets").select("*, author: profiles(*), likes(*)");
+  const { data } = await supabase.from("tweets").select("*, author: profiles(*), likes(*)").order("created_at", { ascending: false });
 
   const tweets = data?.map((tweet) => (
     {
@@ -26,9 +27,9 @@ export default async function Home() {
   )) ?? [];
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-5">
+    <div className="w-full max-w-xl mx-auto">
       <AuthButtonServer />
-      <TweetInput />
+      <TweetInput user={session.user} />
       <Tweets tweets={tweets} />
     </div>
   );

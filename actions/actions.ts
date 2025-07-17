@@ -1,9 +1,7 @@
 "use server";
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
-
 
 export const addTweet = async (prevState: any, formData: FormData) => {
   const title = String(formData.get("title"));

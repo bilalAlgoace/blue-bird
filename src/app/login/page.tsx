@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import Login from "@/components/Auth/Login";
 
+export const dynamic = "force-dynamic";
+
 export default async function LoginPage() {
   const supabase = await createServerComponentClient<Database>({ cookies });
 

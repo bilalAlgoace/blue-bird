@@ -23,7 +23,7 @@ const AuthButton = ({ session } : { session: Session | null }) => {
   };
 
   return (
-    <div className="flex justify-between items-center m-4">
+    <div className="flex justify-between items-center border px-4 py-8 border-gray-800 border-t-0">
       <h1 className="text-2xl font-bold text-blue-600">Blue Bird</h1>
       {session ? (
         <button onClick={handleSignOut} className="bg-red-700 text-white py-2 px-4 rounded-md cursor-pointer">Logout</button>
