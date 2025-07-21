@@ -2,6 +2,7 @@
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 
 export const addTweet = async (prevState: any, formData: FormData) => {
   const title = String(formData.get("title"));
@@ -17,7 +18,7 @@ export const addTweet = async (prevState: any, formData: FormData) => {
     formData.set("title", "");
   }
 
-  // revalidatePath("/");
+  revalidatePath("/");
   return { success: "Tweet added successfully" };
 }
 
@@ -80,5 +81,6 @@ export const updateTweet = async (tweetId: string, title: string) => {
     .update({ title: title.trim() })
     .eq("id", tweetId);
 
+  revalidatePath("/");
   return { success: "Tweet updated successfully" };
 }

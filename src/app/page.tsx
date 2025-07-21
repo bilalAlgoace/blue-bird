@@ -8,7 +8,7 @@ import Tweets from "@/components/Tweets/Tweets";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const supabase = await createServerComponentClient<Database>({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: { session } } = await supabase.auth.getSession();
 

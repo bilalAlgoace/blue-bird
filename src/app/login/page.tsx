@@ -6,7 +6,7 @@ import Login from "@/components/Auth/Login";
 export const dynamic = "force-dynamic";
 
 export default async function LoginPage() {
-  const supabase = await createServerComponentClient<Database>({ cookies });
+  const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: { session } } = await supabase.auth.getSession();
 
