@@ -61,7 +61,7 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
 
   const handleSaveEdit = async (tweetId: string) => {
     if (editText.trim() === "") return;
-    
+
     setIsUpdating(tweetId);
     try {
       const result = await updateTweet(tweetId, editText);
@@ -129,7 +129,7 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
           const formatted = date.toISOString().slice(0, 19).replace("T", " ");
           const isOwner = tweet.user_id === currentUserId;
           const isMenuOpen = showMenu === tweet.id;
-          
+
           return (
             <div key={tweet.id} className="flex border border-gray-800 border-t-0 px-4 py-6">
               <div className="h-12 w-12">
@@ -143,7 +143,7 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
                   </p>
                   {isOwner && (
                     <div className="relative">
-                      <button 
+                      <button
                         onClick={() => toggleMenu(tweet.id)}
                         className="text-gray-400 hover:text-white text-xl cursor-pointer p-1"
                       >
@@ -151,13 +151,13 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
                       </button>
                       {isMenuOpen && (
                         <div className="absolute right-0 mt-2 w-32 bg-gray-800 border border-gray-700 rounded-md shadow-lg z-10">
-                          <button 
+                          <button
                             onClick={() => handleEdit(tweet)}
                             className="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
                           >
                             Edit
                           </button>
-                          <button 
+                          <button
                             onClick={() => {
                               setShowDeleteModal(tweet.id);
                               setShowMenu(null);
@@ -181,8 +181,8 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
 
         {/* Click outside to close menu */}
         {showMenu && (
-          <div 
-            className="fixed inset-0 z-5" 
+          <div
+            className="fixed inset-0 z-5"
             onClick={() => setShowMenu(null)}
           />
         )}
@@ -202,13 +202,13 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
               autoFocus
             />
             <div className="flex justify-end gap-3 mt-4">
-              <button 
+              <button
                 onClick={handleCancelEdit}
                 className="px-4 py-2 text-gray-300 hover:text-white border border-gray-600 rounded-md hover:bg-gray-700"
               >
                 Cancel
               </button>
-              <button 
+              <button
                 onClick={() => handleSaveEdit(currentTweet.id)}
                 disabled={isUpdating === currentTweet.id || editText.trim() === ""}
                 className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -227,13 +227,13 @@ const Tweets = ({ tweets, currentUserId }: { tweets: TweetWithAuthor[], currentU
             <h3 className="text-xl font-bold text-white mb-4">Delete Tweet</h3>
             <p className="text-gray-300 mb-6">Are you sure you want to delete this tweet? This action cannot be undone.</p>
             <div className="flex justify-end gap-3">
-              <button 
+              <button
                 onClick={handleCancelDelete}
                 className="px-4 py-2 text-gray-300 hover:text-white border border-gray-600 rounded-md hover:bg-gray-700"
               >
                 Cancel
               </button>
-              <button 
+              <button
                 onClick={() => handleDelete(currentTweet.id)}
                 disabled={isDeleting === currentTweet.id}
                 className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"

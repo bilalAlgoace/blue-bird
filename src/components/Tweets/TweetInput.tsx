@@ -17,7 +17,7 @@ const TweetInput = ({ user }: { user: User }) => {
           type="text"
           name="title"
           placeholder="What is happening?!"
-          className="w-full px-2 bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 border-none border-0 outline-0 focus:outline-none"
+          className="w-full px-2 text-white bg-inherit flex-1 ml-2 text-2xl leading-loose placeholder-gray-500 border-none border-0 outline-0 focus:outline-none"
         />
         {state?.error && <p style={{ color: 'red' }}>{state.error}</p>}
         <button type="submit" className="d-block self-end py-1 px-2 bg-amber-600 text-white border-none rounded-md cursor-pointer">Tweet</button>
